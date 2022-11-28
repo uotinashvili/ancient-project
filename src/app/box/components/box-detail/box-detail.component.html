@@ -1,0 +1,34 @@
+<app-loader [loading$]="loading$"></app-loader>
+
+<div class="alert alert-danger" *ngIf="error$ | async">
+  <strong>Error!</strong> There is an error.
+</div>
+
+<div
+  class="card"
+  style="width: 18rem; height: 100%"
+  *ngIf="!(loading$ | async)"
+>
+  <img class="card-img-top" [src]="box.iconUrl" style="height: 100%" />
+  <div class="card-body">
+    <h4 class="card-title">{{ box.name }}</h4>
+    <div class="card-text">
+      <p>cost: {{ box.cost }}</p>
+      <div *ngIf="boxOpenings.length > 0">
+        <ng-container *ngFor="let opening of boxOpenings">
+          <ng-container *ngIf="opening.itemVariant">
+            <strong>Wining:</strong> {{ opening.itemVariant.name }} -
+            {{ opening.itemVariant.value }}
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <button
+      class="btn btn-primary"
+      [disabled]="opening$ | async"
+      (click)="openBox()"
+    >
+      Open Box
+    </button>
+  </div>
+</div>

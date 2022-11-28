@@ -1,0 +1,8 @@
+<div class="card" style="width: 18rem; height: 100%">
+  <img class="card-img-top" [src]="box.iconUrl" style="height: 100%" />
+  <div class="card-body">
+    <h4 class="card-title">{{ box.name }}</h4>
+    <p class="card-text">cost: {{ box.cost }}</p>
+    <a [routerLink]="['/boxes/', box.id]" class="btn btn-primary">Box Detail</a>
+  </div>
+</div>

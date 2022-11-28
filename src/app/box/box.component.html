@@ -1,0 +1,8 @@
+<app-loader [loading$]="loading$"></app-loader>
+
+<div class="row">
+  <div *ngFor="let box of boxes$ | async" class="col-auto mb-3">
+    <app-box-item [box]="box"></app-box-item>
+  </div>
+</div>
+
